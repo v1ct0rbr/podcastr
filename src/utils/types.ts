@@ -9,3 +9,11 @@ export type TypeEpisode = {
 	duration: number;
 	durationAsString: string;
 };
+
+export type TypeEpisodePlayer = {
+	title: string;
+	members: string;
+	thumbnail: string;
+	duration: number;
+	url: string;
+}
