@@ -39,7 +39,7 @@ body,
 input,
 textarea,
 button {
-	font: 500 1rem sans-serif;
+	font: 500 1rem Inter,sans-serif;
 	color: var(--gray-500);
 }
 h1,
@@ -49,7 +49,8 @@ h4,
 h5,
 h6 {
 	font-weight: 600;
-	font-family: 'Inter', sans-serif;
+	font-family: Lexend, sans-serif;
+	color: var(--gray-800);
 }
 
 h1 {
@@ -62,3 +63,6 @@ button {
 	cursor: pointer;
 }
 
+a{
+	font-size: 1rem;
+}
