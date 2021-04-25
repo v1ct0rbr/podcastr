@@ -6,9 +6,13 @@ import 'rc-slider/assets/index.css';
 import { usePlayer } from '../../contexts/PlayerContext';
 import styles from './styles.module.scss';
 import { convertDurationToTimeString } from '../../utils/functions';
+
+import { VolumeSlider } from 'react-media-slider';
+
 export default function Player() {
 	const audioRef = useRef<HTMLAudioElement>(null);
 	const [progress, setProgress] = useState(0);
+	const [volume, setVolume] = useState(100);
 
 	const {
 		episodeList,
@@ -24,7 +28,7 @@ export default function Player() {
 		toggleLoop,
 		isShuffling,
 		toggleShuffle,
-		clearPlayerState
+		clearPlayerState,
 	} = usePlayer();
 
 	useEffect(() => {
@@ -47,10 +51,9 @@ export default function Player() {
 		});
 	};
 	function handleEpisodeEnded() {
-		
 		if (hasNext) {
 			playNext();
-		}else{
+		} else {
 			clearPlayerState();
 		}
 	}
@@ -58,6 +61,13 @@ export default function Player() {
 	function handleSeek(amount: number) {
 		audioRef.current.currentTime = amount;
 		setProgress(amount);
+	}
+
+	function handleVolume(amount: number) {
+		if (audioRef.current) {
+			audioRef.current.volume = amount;
+			setVolume(amount);
+		}
 	}
 
 	return (
@@ -137,6 +147,21 @@ export default function Player() {
 					>
 						<img src="/repeat.svg" alt="Repetir" />
 					</button>
+				</div>
+				<div className={styles.sliderVolume} style={{display: 'flex', justifyContent: 'space-between', alignItems:'center'}}>
+					<img src="/volume.svg" alt="Tocar a próxima" style={{ color: 'white' }} />
+
+					<Slider
+						style={{ width: '70%' }}
+						max={1}
+						step={0.05}
+						value={volume}
+						onChange={handleVolume}
+						trackStyle={{ backgroundColor: '#04d361' }}
+						railStyle={{ backgroundColor: '#9f75ff' }}
+						handleStyle={{ borderColor: '#04d361', borderWidth: 4 }}
+					/>
+					<span style={{marginLeft: '1rem', fontSize: '0.6rem'}}>{`${Math.floor(volume * 100)} %`}</span>
 				</div>
 			</footer>
 		</div>

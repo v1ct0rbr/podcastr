@@ -4,7 +4,8 @@
 	// width: 22.5rem;
 	height: 100vh;
 
-	background: var(--purple-500);
+	// background: var(--purple-500);
+	background: var(--header-color);
 	color: var(--white);
 
 	display: flex;
@@ -34,8 +35,11 @@
 
 .currentEpisode {
 	text-align: center;
+	margin-top: 1rem;
 	img {
+		
 		border-radius: 1.5rem;
+		width: 14rem;
 	}
 	strong {
 		display: block;
@@ -89,6 +93,7 @@
 			border-radius: 2px;
 		}
 	}
+	
 }
 .buttons {
 	display: flex;
