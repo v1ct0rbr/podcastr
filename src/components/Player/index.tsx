@@ -12,7 +12,7 @@ import { VolumeSlider } from 'react-media-slider';
 export default function Player() {
 	const audioRef = useRef<HTMLAudioElement>(null);
 	const [progress, setProgress] = useState(0);
-	const [volume, setVolume] = useState(100);
+	const [volume, setVolume] = useState(1);
 
 	const {
 		episodeList,
